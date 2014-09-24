@@ -188,7 +188,11 @@ if you want to access devices without calling API again, you can use
 `spark.devices`
 
 ```javascript
-spark.listDevices(function(devices) {
+spark.listDevices(function(err, devices) {
+  if (err) {
+    console.log("Error: ", err);
+    return;
+  }
   var device = devices[0];
 
   console.log('Device name: ' + device.name);
